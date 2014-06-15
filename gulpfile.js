@@ -29,7 +29,7 @@ var config = {
   COMPONENT: {
     manifest: "component.json",
     // este src é usado para fazer watching de components pessoais
-    src: ["mycomponents/**/*.coffee", "mycomponents/**/*.js", "mycomponents/**/*.css"],
+    src: ["mycomponents/**/*.js", "mycomponents/**/*.css"],
     build: "build/css/"
   },
 
@@ -128,10 +128,7 @@ gulp.task('js', function () {
 gulp.task('component-js', function () {
   gulp.src( config.COMPONENT.manifest )
     .pipe(component.scripts({
-      standalone: false,
-      configure: function (builder) {
-        builder.use( componentcoffee )
-      }
+      standalone: false
     }))
     .pipe(gulp.dest( config.COFFEE.build ))
 })

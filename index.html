@@ -3,58 +3,62 @@
   <head>
     <meta charset="utf-8">
     <title>Ember.js • TodoMVC</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="build/css/main.css">
   </head>
   <body>
-    <section id="todoapp">
-      <header id="header">
-        <h1>todos</h1>
-        <input type="text" id="new-todo" placeholder="What needs to be done?" />
-      </header>
+    <script charset="utf-8" type="text/x-handlebars" data-template-name="todos">
+      <section id="todoapp">
+        <header id="header">
+          <h1>todos</h1>
+          <input type="text" id="new-todo" placeholder="What needs to be done?" />
+        </header>
 
-      <section id="main">
-        <ul id="todo-list">
-          <li class="completed">
-            <input type="checkbox" class="toggle">
-            <label>Learn Ember.js</label><button class="destroy"></button>
-          </li>
-          <li>
-            <input type="checkbox" class="toggle">
-            <label>...</label><button class="destroy"></button>
-          </li>
-          <li>
-            <input type="checkbox" class="toggle">
-            <label>Profit!</label><button class="destroy"></button>
-          </li>
-        </ul>
+        <section id="main">
+          <ul id="todo-list">
+            {{#each}}
+              <li class="completed">
+                <input type="checkbox" class="toggle">
+                <label>{{title}}</label><button class="destroy"></button>
+              </li>
+            {{/each}}
+          </ul>
 
-        <input type="checkbox" id="toggle-all">
+          <input type="checkbox" id="toggle-all">
+        </section>
+
+        <footer id="footer">
+          <span id="todo-count">
+            <strong>2</strong> todos left
+          </span>
+          <ul id="filters">
+            <li>
+              <a href="all" class="selected">All</a>
+            </li>
+            <li>
+              <a href="active">Active</a>
+            </li>
+            <li>
+              <a href="completed">Completed</a>
+            </li>
+          </ul>
+
+          <button id="clear-completed">
+            Clear completed (1)
+          </button>
+        </footer>
       </section>
 
-      <footer id="footer">
-        <span id="todo-count">
-          <strong>2</strong> todos left
-        </span>
-        <ul id="filters">
-          <li>
-            <a href="all" class="selected">All</a>
-          </li>
-          <li>
-            <a href="active">Active</a>
-          </li>
-          <li>
-            <a href="completed">Completed</a>
-          </li>
-        </ul>
-
-        <button id="clear-completed">
-          Clear completed (1)
-        </button>
+      <footer id="info">
+        <p>Double-click to edit a todo</p>
       </footer>
-    </section>
+    </script>
 
-    <footer id="info">
-      <p>Double-click to edit a todo</p>
-    </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.5.1/ember.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.5/ember-data.js"></script>
+    <script src="build/ember/application.js"></script>
+    <script src="build/ember/router.js"></script>
+    <script src="build/ember/models/todo.js"></script>
   </body>
 </html>
